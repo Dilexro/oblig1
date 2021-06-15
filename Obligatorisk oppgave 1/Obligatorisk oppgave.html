@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
     <link rel="shortcut icon" href="#">
+    <script src="model.js"></script>
+    <script src="controller.js"></script>
     <style>
         .correct {
             background-color: #1fe01f;
@@ -17,28 +19,8 @@
     </style>    
 </head>
 <body>
-    <!-- View -->
-    <div class="quiz-wrapper">
-        <div id="questionBox" class="question">
-            Sample Question
-        </div>
-        <div class="options">
-            <ul id="ul">
-                <li id="opt1" onclick="button(this)"></li>
-                <li id="opt2" onclick="button(this)"></li>
-                <li id="opt3" onclick="button(this)"></li>
-                <li id="opt4" onclick="button(this)"></li>
-            </ul>
-        </div>
-        <div class="score">
-            <div class="next">
-                <button id="btnNext" type="button" onclick="next()">Next</button>
-            </div>
-            <div class="score-card">
-                SCORE: <span id="scoreCard">0</span>
-            </div>
-        </div>
-    </div>
-    <script src="script.js"></script>
+    <div id="app"></div>
+    <!-- <script src="script.js"></script> -->
+    <script src="view.js"></script>
 </body>
 </html>
