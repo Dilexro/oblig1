@@ -10,11 +10,16 @@
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
     <script src="https://code.jquery.com/qunit/qunit-2.16.0.js"></script>
-    <script src="script.js"></script>
+    <script src="model.js"></script>
+    <script src="controller.js"></script>
     <script>
-        QUnit.test("Test om det første svaret er et tall", function(assert) {
-            const actual = Number.isInteger(app.questions[0].answer1);
-            const expected = true;
+        //Dummy view
+        function view(){}
+        QUnit.test("Sjekker at funksjonen next gjør som den skal", function(assert) {
+            model.questionIndex= 0;
+            next()
+            const actual = model.questionIndex
+            const expected = 1;
             assert.equal(actual, expected);
         });
 
