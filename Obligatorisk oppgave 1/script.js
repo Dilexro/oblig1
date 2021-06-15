@@ -97,3 +97,68 @@ function next(){
     app.next();
     app.allowClick();
 };
+        //Controller
+        index:0,
+        load:function(){
+            if(this.index<=this.questions.length-1){
+                quizbox.innerHTML=this.index+1 + ". " +this.questions[this.index].q;
+                opt1.innerHTML=this.questions[this.index].options[0];
+                opt2.innerHTML=this.questions[this.index].options[1];
+                opt3.innerHTML=this.questions[this.index].options[2];
+                opt4.innerHTML=this.questions[this.index].options[3];
+
+            } else {
+                quizbox.innerHTML="Quiz Completed!";
+                ul.style.display="none";
+                nextButton.style.display="none";
+            }
+        },
+        next: function(){
+            this.index++;
+            this.load();
+        },
+        check: function(ele){
+            var id=ele.id.split('');
+            if (id[id.length-1] == this.questions[this.index].answer1 || id[id.length-1] == this.questions[this.index].answer2) {
+                this.score++;
+                this.scoreCard();
+                return true;
+            } else {
+                return false;
+            }
+        },
+        preventClick:function(){
+            for(let i=0; i<ul.children.length; i++){
+                ul.children[i].style.pointerEvents="none";
+            }
+        },
+        allowClick:function(){
+            for (let i = 0; i < ul.children.length; i++){
+                ul.children[i].style.pointerEvents="auto";
+                ul.children[i].className='';
+            }
+        },
+        score:0,
+        scoreCard:function(){
+            scoreCard.innerHTML=this.score + "/" + this.questions.length;
+        }
+};
+
+window.load=app.load();
+
+function button(ele){
+    let isAnswerCorrect = app.check(ele);
+
+    if (isAnswerCorrect) {
+        ele.className="correct";
+    } else {
+        ele.className="wrong";    
+    }
+
+    app.preventClick();
+}
+
+function next(){
+    app.next();
+    app.allowClick();
+};
